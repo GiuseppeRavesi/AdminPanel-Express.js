@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>utenti</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/css/admin_style.css">
+
+</head>
+<body>
+
+<%- include( './admin_header') %>
+
+<!-- user accounts section starts  -->
+
+<section class="accounts">
+
+    <h1 class="heading">Utenti</h1>
+ 
+    <div class="box-container">
+ 
+       <% if (users && users.length > 0) { %>
+          <% users.forEach(user => { %>
+             <div class="box">
+                <p> user id : <span><%= user.id %></span> </p>
+                <p> nome : <span><%= user.name %></span> </p>
+                <p> email : <span><%= user.email %></span> </p>
+                <p> cellulare : <span><%= user.number %></span> </p>
+                <button class="delete-btn" data-id="<%= user.id %>">elimina</button>
+             </div>
+          <% }); %>
+       <% } else { %>
+          <p class="empty">Nessun utente trovato</p>
+       <% } %>
+ 
+    </div>
+ 
+ </section>
+ 
+
+<!-- user accounts section ends -->
+
+<!-- custom js file link  -->
+<script src="/js/admin_script.js"></script>
+<script src="/js/deleteUsers.js"></script>
+
+</body>
+</html>

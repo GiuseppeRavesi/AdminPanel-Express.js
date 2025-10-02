@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>messaggi</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/css/admin_style.css">
+</head>
+<body>
+
+<%- include('./admin_header') %>
+
+<!-- messages section starts  -->
+
+<section class="messages">
+
+   <h1 class="heading">Messaggi</h1>
+
+   <div class="box-container">
+
+   <% if (messages && messages.length > 0) { %>
+      <% messages.forEach(message => { %>
+         <div class="box" id="message-<%= message.id %>">
+            <p> nome : <span><%= message.name %></span> </p>
+            <p> numero : <span><%= message.number %></span> </p>
+            <p> email : <span><%= message.email %></span> </p>
+            <p> messaggio : <span><%= message.message %></span> </p>
+            <button class="delete-btn" data-id="<%= message.id %>">elimina</button>
+         </div>
+      <% }) %>
+   <% } else { %>
+      <p class="empty">non hai messaggi</p>
+   <% } %>
+
+   </div>
+
+</section>
+
+<!-- messages section ends -->
+
+<!-- custom js file link  -->
+<script src="/js/admin_script.js"></script>
+<script src="/js/deleteMessage.js"></script>
+
+</body>
+</html>

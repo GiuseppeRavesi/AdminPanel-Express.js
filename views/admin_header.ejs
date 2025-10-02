@@ -1,0 +1,42 @@
+<% if (message && message.length> 0) { %>
+<div class="message">
+    <span>
+        <%= message[0] %>
+    </span>
+    <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+</div>
+<% } %>
+
+<header class="header">
+
+<section class="flex">
+
+    <a href="/dashboard" class="logo">Admin<span>Panel</span></a>
+
+    <nav class="navbar">
+        <a href="/dashboard">dashboard</a>
+        <a href="/products">prodotti</a>
+        <a href="/placed_orders">ordini</a>
+        <a href="/admin_accounts">admin</a>
+        <a href="/user_account">utenti</a>
+        <a href="/messages">messaggi</a>
+    </nav>
+
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+    </div>
+
+    <div class="profile">
+        <p><%=  admin.name %></p>
+        <a href="/update_profile" class="btn">modifica profilo</a>
+        <div class="flex-btn">
+            <!--<a href="/admin_login" class="option-btn">login</a>-->
+            <a href="/admin_register" class="option-btn">registrati</a>
+        </div>
+        <a href="/admin_logout" onclick="return confirm('Vuoi davvero uscire?');" class="delete-btn">logout</a>
+    </div>
+
+</section>
+
+</header>

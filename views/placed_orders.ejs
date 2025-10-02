@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ordini</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/css/admin_style.css">
+
+</head>
+<body>
+
+<%- include('./admin_header') %>
+
+<!-- placed orders section starts  -->
+
+<section class="placed-orders">
+
+    <h1 class="heading">placed orders</h1>
+ 
+    <div class="box-container">
+ 
+        <% if (orders && orders.length > 0) { %>
+            <% orders.forEach(function(order) { %>
+              <div class="box">
+                <p> user id : <span><%= order.user_id %></span> </p>
+                <p> effettuato in data : <span><%= order.placed_on %></span> </p>
+                <p> nome : <span><%= order.name %></span> </p>
+                <p> email : <span><%= order.email %></span> </p>
+                <p> cellulare : <span><%= order.number %></span> </p>
+                <p> indirizzo : <span><%= order.address %></span> </p>
+                <p> prodotti totali : <span><%= order.total_products %></span> </p>
+                <p> totale speso : <span>$<%= order.total_price %>/-</span> </p>
+                <p> metodo di pagamento : <span><%= order.method %></span> </p>
+                
+                <% if (order.payment_status === 'COMPLETED') { %>
+                  <p> stato di pagamento : <span><b>Completato</b></span> </p>
+                <% } else { %>
+                  <form action="/update_payment_status" method="POST">
+                    <input type="hidden" name="order_id" value="<%= order.id %>">
+                    <select name="payment_status" class="drop-down">
+                      <option value="pending">pending</option>
+                      <option value="COMPLETED">COMPLETED</option>
+                    </select>
+                    <div class="flex-btn">
+                      <input type="submit" value="aggiorna" class="btn" name="update_payment">
+                      <a href="/placed_orders?delete=<%= order.id %>" class="delete-btn" onclick="return confirm('delete this order?');">elimina</a>
+                    </div>
+                  </form>
+                <% } %>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <p class="empty">nessun ordine piazzato</p>
+          <% } %>
+    </div>
+ 
+ </section>
+
+<!-- placed orders section ends -->
+
+
+<!-- custom js file link  -->
+<script src="/js/admin_script.js"></script>
+
+</body>
+</html>

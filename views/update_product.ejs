@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>modifica prodotto</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/css/admin_style.css">
+
+</head>
+<body>
+
+<%- include('./admin_header') %>
+
+<!-- update product section starts  -->
+
+<section class="update-product">
+
+   <h1 class="heading">modifica prodotto</h1>
+
+   <form action="/updateProduct" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="pid" value="<%= product.id %>">
+      <input type="hidden" name="old_image" value="<%= product.image %>">
+      <img src="/project_images/<%= product.image %>" alt="">
+      <span>modifica nome</span>
+      <input type="text" required placeholder="inserisci nome prodotto" name="name" maxlength="100" class="box" value="<%= product.name %>">
+      <span>modifica prezzo</span>
+      <input type="number" min="0" max="9999999999" required placeholder="inserisci prezzo prodotto" name="price" onkeypress="if(this.value.length == 10) return false;" class="box" value="<%= product.price %>">
+      <span>modifica categoria</span>
+      <select name="category" class="box" required>
+         <option selected value="<%= product.category %>"><%= product.category %></option>
+         <option value="primo">primo</option>
+         <option value="fast food">fast food</option>
+         <option value="bevanda">bevanda</option>
+         <option value="dolce">dolce</option>
+      </select>
+      <span>modifica immagine</span>
+      <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp">
+      <div class="flex-btn">
+         <input type="submit" value="aggiorna" class="btn" name="update">
+         <a href="/products" class="option-btn">indietro</a>
+      </div>
+   </form>
+
+</section>
+
+<!-- update product section ends -->
+
+<!-- custom js file link  -->
+<script src="/js/admin_script.js"></script>
+
+</body>
+</html>

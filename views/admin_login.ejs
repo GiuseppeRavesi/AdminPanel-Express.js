@@ -1,0 +1,42 @@
+<html lang="it">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="../public/images/logo.webp">
+   <title>Admin Login</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/css/admin_style.css">
+</head>
+<body>
+
+<% if (message && message.length> 0) { %>
+   <div class="message">
+      <span>
+         <%= message[0] %>
+      </span>
+      <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+   </div>
+<% } %>
+
+
+<section class="form-container">
+   <form action="/login_admin" id="loginForm" method="POST">
+      <h3>Effettua il Login</h3>
+      <input type="text" name="name" maxlength="20"  placeholder="inserisci il tuo nickname" class="box">
+      <div class="error" id="nameError"></div>
+      <div class="password-container">
+         <input type="password" name="pass" id="password" placeholder="inserisci la tua password" class="box" maxlength="50">
+         <i class="toggle-password fas fa-eye"></i>
+      </div>
+      <div class="error" id="passError"></div>
+      <input type="submit" value="login now" name="submit" class="btn">
+   </form>
+</section>
+
+<script src="/js/login.js"></script>
+</body>
+</html>

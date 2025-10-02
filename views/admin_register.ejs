@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>registrazione</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../css/admin_style.css">
+
+</head>
+<body>
+<%- include('./admin_header') %>
+
+
+<section class="form-container">
+
+   <form action="/register" id= 'registerForm' method="POST">
+      <h3>Registrati</h3>
+      <input type="text" name="name" maxlength="20"  placeholder="inserisci nickname" class="box" >
+      <div class="error" id="nameError"></div>
+      <input type="password" name="pass" maxlength="20"  placeholder="inserisci password" class="box" >
+      <div class="error" id="passError"></div>
+      <input type="password" name="cpass" maxlength="20"  placeholder="conferma password" class="box" >
+      <div class="error" id="cpassError"></div>
+      <input type="submit" value="registrati"  class="btn">
+   </form>
+
+</section>
+
+<script src="/js/admin_script.js"></script>
+<script src="/js/register.js"></script>
+
+</body>
+</html>
